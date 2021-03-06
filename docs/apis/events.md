@@ -1,0 +1,3 @@
+# Events API
+
+### CRUD operations 

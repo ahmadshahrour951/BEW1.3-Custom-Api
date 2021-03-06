@@ -1,0 +1,8 @@
+* [Overview](/)
+* [Getting Started](getting-started.md)
+* [API Documentation](apis/institutions.md)
+  * [Institutions API](apis/institutions.md)
+  * [Residences API](apis/residences.md)
+  * [Users API](apis/users.md)
+  * [Events API](apis/events.md)
+  * [Auth API](apis/auth.md)
