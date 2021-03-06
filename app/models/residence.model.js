@@ -5,6 +5,15 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
+    name: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false
+    },
+    max_capacity: {
+      type: DataTypes.INTEGER,
+      default: 100
+    }
   });
   return Residence;
 };

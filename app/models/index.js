@@ -5,7 +5,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
   operatorsAliases: 0,
-
+  logging: false,
   pool: {
     max: dbConfig.pool.max,
     min: dbConfig.pool.min,
@@ -30,32 +30,29 @@ db.events = require('./event.model')(sequelize, Sequelize);
 db.institutions.hasMany(db.residences, { as: 'residences' });
 db.residences.belongsTo(db.institutions, {
   as: 'institution',
-  foreignKey: 'institution_id',
 });
 
 // RESIDENCES AND USERS - ONE-TO-MANY
 db.residences.hasMany(db.users, { as: 'users' });
 db.users.belongsTo(db.residences, {
-  as: 'residence',
-  foreignKey: 'residence_id',
+  as: 'residence'
 });
 
-// RESIDENCES AND EVENTS - ONE-TO-MANY
-db.residences.hasMany(db.events, { as: 'events' });
-db.events.belongsTo(db.residences, {
-  as: 'residence',
-  foreignKey: 'residence_id',
+//  USER CREATOR and EVENTS - ONE-TO-MANY
+db.users.hasMany(db.events, { as: 'EventsCreated' });
+db.events.belongsTo(db.users, {
+  as: 'creator'
 });
 
 // USERS AND EVENTS - MANY-TO-MANY
 db.users.belongsToMany(db.events, {
   through: 'user_event',
-  as: 'users',
+  as: 'events',
   foreignKey: 'user_id',
 });
 db.events.belongsToMany(db.users, {
   through: 'user_event',
-  as: 'events',
+  as: 'users',
   foreignKey: 'event_id',
 });
 
