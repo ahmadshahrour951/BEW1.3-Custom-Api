@@ -2,6 +2,8 @@ const userDao = require('../dao/user.dao');
 var userController = {
   addUser,
   findUsers,
+  findAllEventsAttending,
+  findAllCreatorEvents,
   findUserById,
   updateUser,
   deleteById,
@@ -12,7 +14,7 @@ function addUser(req, res) {
   userDao
     .create(user)
     .then((data) => {
-      res.send(data);
+      return res.json(data);
     })
     .catch((error) => {
       console.log(error);
@@ -23,7 +25,7 @@ function findUserById(req, res) {
   userDao
     .findById(req.params.id)
     .then((data) => {
-      res.send(data);
+      return res.json(data);
     })
     .catch((error) => {
       console.log(error);
@@ -50,7 +52,7 @@ function updateUser(req, res) {
     .then((data) => {
       res.status(200).json({
         message: 'User updated successfully',
-        user: data,
+        user: data[0],
       });
     })
     .catch((error) => {
@@ -62,7 +64,29 @@ function findUsers(req, res) {
   userDao
     .findAll()
     .then((data) => {
-      res.send(data);
+      return res.json(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function findAllEventsAttending(req, res) {
+  userDao
+    .findAllEventsAttending(req.params.id)
+    .then((data) => {
+      return res.json(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function findAllCreatorEvents(req, res) {
+  userDao
+    .findAllCreatorEvents(req.params.id)
+    .then((data) => {
+      return res.json(data);
     })
     .catch((error) => {
       console.log(error);
