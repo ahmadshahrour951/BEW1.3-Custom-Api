@@ -3,8 +3,8 @@
 ## Install Node & NPM
 Head over to [Node's website](https://nodejs.org/en/download/) and download Nodejs, you'll simultaneously be downloading NPM too.
 
-## Install and Configure PostgreSQL
-Head over to [PostgreSQL's website](https://www.postgresql.org/download/) and download the latest version of PostgreSQL. Follow the setup and make sure to remember your credentials
+## Install and Configure MySQL
+Head over to [MySQL's website](https://dev.mysql.com/downloads/mysql/) and download the latest version of PostgreSQL. Follow the setup and make sure to remember your credentials
 
 ## Install Packages
 Once you've cloned this repo, go ahead and install the required packages via NPM
